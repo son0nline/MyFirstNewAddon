@@ -1,0 +1,38 @@
+{
+    "description": "MyFistNewAddon",
+    "manifest_version": 2,
+    "name": "MyFistNewAddon",
+    "version": "1.0",
+    "homepage_url": "https://mozilla.org",
+    "icons": {
+        "48": "icons/page-48_2.png"
+    },
+    "permissions": [
+        "activeTab", "tabs", "http://*/*", "https://*/*", "contextMenus"
+    ],
+
+    "background": {
+        "scripts": ["background.js", "libs/jquery-2.2.1.min.js"]
+    },
+
+    "browser_action": {
+        "default_icon": "icons/page-32.png"
+    },
+
+    "content_scripts": [{
+        "matches": ["http://*/*"],
+        "js": ["libs/jquery-2.2.1.min.js"]
+    }, {
+        "matches": ["https://*/*"],
+        "js": ["libs/jquery-2.2.1.min.js"]
+    }, {
+        "matches": ["*://*.youtube.com/*"],
+        "js": ["changeIcon.js", "borderify.js"]
+    }, {
+        "matches": ["*://*.vozforums.com/*","*://*.voz.vn/*"],
+        "js": ["voz.js"]
+    }, {
+        "matches": ["*://*.skype.com/*"],
+        "js": ["skype.js"]
+    }]
+}
